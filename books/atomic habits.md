@@ -35,7 +35,7 @@ any sort of desire is a manifestation of our primitive cravings of survival, rep
 
 To make a habit attractive we need to associate it with an enjoyable experience, we need to do something we enjoy immediately before a hard habit, the reward that you will get will make you come back to that habit once again, and with repetition it will become automatic
 
-### Chapter 4 : make it easy
+## Chapter 4 : make it easy
 
 taking action is preferred over being in motion, what the author means by being in motion is planning and strategizing without actually making any action, exactly like me writing lists of technologies and things i want to learn and projects i want to make and books i want to read without ever starting any of them.
 
@@ -52,3 +52,15 @@ To make a habit easier, reduce the friction and intermediary steps to perform it
 To avoid being overwhelmed when trying to pick up a new habit, it should not take more than 2 mins to be done,in the beginning, as time goes on, the 2 mins will become the starting point of a habit that takes longer to complete.
 
 Technology and automation should be used as much as possible in your favor to build good habits and get rid of bad ones.
+
+## Chapter 5 : make it satisfying
+
+Humans are more into instant gratification than they are into delayed gratification, examples : people know that cigarettes are bad for health but they still smoke because the reward they get puffing a cigarette is instant, while the health problems are delayed. Going to the gym : people leave the gym after the first month because they don't notice the result right away, even though they know that it will come with time.
+
+Habits that are immediately followed by a reward are repeated
+
+The best way to keep a habit is by using a visual progress tracker, by seeing it, you will get this urge to keep the streak going
+
+## Chapter 6 : advanced tactics
+
+not all people are born the same, some people are built have certain characteristics that make them more suitable for certain tasks. Same goes for habit, it will be hard to pick up a habit that is usually associated with people that are different from you personality and physicality wise.
