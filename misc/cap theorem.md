@@ -22,3 +22,14 @@ The client issues a write request to g1, since the system is available it needs 
 but, since the system is partitioned it g1 cannot send the new version of the data to g1.  
 Next, the client issues a read request for g2, requesting the data written on g2, the system
 is available but responds with stale data, therefore the system is inconsistent.
+
+## CAP Theorem & some noSql dbs
+
+Partition in distributed systems in unavoidable, so the devs need to either choose between consistency and availability for their database depending on the nature of the app.
+
+- MongoDB : consistent and partition tolerant, it's a single-master system, each replica set has one primary node that receives
+  all the write operations. The other nodes in the set replicate the primary node's operations log and apply it to their own data set.
+  When a master node becomes unavailable, the secondary node with the most recent operation log will be elected as the new master.
+  Once the rest of the nodes become in sync with the new master, the cluster becomes available again. Clients can't send requests in this interval which guarantees consistency.
+
+- cassandra : available and partition tolerant : masterless architecture, writing requests can be sent to any node in the system, so the system always needs to be available
