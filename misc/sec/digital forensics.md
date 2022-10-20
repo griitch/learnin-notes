@@ -26,3 +26,11 @@ To ensure it does not get damaged, and that devices that can access a network do
 ### Transport to the forensics labs
 
 the process at the lab goes like : - create a forensic copy of the evidence - the copies are validated with hashes. - return the evidence to the secure container (if we damage the copy we can always create a new copy) - process the copy on the forensics workstation - reporting
+
+### In practice
+
+- Some of the info an investigator might look into are files metadata, that are automatically created whenever a file is created,
+for example *pdfinfo* command give info about the creator, producer, creation and modification dates ..etc about a pdf file.
+- photo EXIF data : exchangeable image file format, a standarized format for saving pictures metadata, where was it took, the date, the model of cam,phone ..., a cmd line tool to extract the data is *exiftool* 
+
+
