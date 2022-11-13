@@ -29,7 +29,7 @@ iptables -I INPUT -p tcp --dport <port> -j REJECT --reject-with tcp-reset
 
 - but have some disadvantages :
 
-  - require sudo permissions, since it needs to create raw packets
+  - require sudo permissions, since it needs to create raw packets (raw packets are created in the application layer, and have a flag set that indicates to the underlying layers that the packet does not need further encapsulation )
   - unstable services are sometimes brought down by syn scans.
 
 Port is marked as :
