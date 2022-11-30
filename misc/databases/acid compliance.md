@@ -1,8 +1,10 @@
-Transaction : indivisble unit of work, a set of operations that must either be all done, or none of them done at all.  
+[good article](https://fauna.com/blog/database-transaction)
 
-Atomicity : all ops in the transacation must be performed successfully or fail altogether.    
+Transaction : indivisble unit of work, a set of operations that must either be all done, or none of them done at all.
 
-Consistency : data must be valid/consistent before and after the transactions, constraints and integrity checks should be respected.  
+Atomicity : all ops in the transacation must be performed successfully or fail altogether.
+
+Consistency : data must be valid/consistent before and after the transactions, constraints and integrity checks should be respected.
 
 Isolation : according to wikipedia, concurrent execution of transactions should leave the db in the same state it would have been in had the transactions executed sequentially.
 

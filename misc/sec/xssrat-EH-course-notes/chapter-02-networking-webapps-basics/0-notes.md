@@ -4,7 +4,7 @@ as im already familiar with most of the topics ill just skim thru this chapter
 
 - http tunnelling & http connect method
 
-  - client sends to the proxy / vpn server a connect request with the ip address of a distant server that the client cannnot access directly
+  - client sends to the proxy / vpn server a connect request with the ip address of a distant server that the client cannot access directly, (why can't the client have access to the server ? maybe he can't understand the used protocol, http1 vs http2 for example, maybe he does not have the required client library.. etc)
   - an http tunnel is created
   - a tunnel is basically a tcp connection between the server and the proxy through which the client requests will be forwarded
   - any subsequent request to the proxy from that client will be sent to the distant server thru that tunnel ( with nat )
