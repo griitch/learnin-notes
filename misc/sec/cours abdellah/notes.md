@@ -24,3 +24,6 @@ a firmware = micro logiciel. uses secure dfu
 - signature key : public key
 - esp partition : efi system partition
 - mounted and contains .efi programs : like a grub.efi
+
+- mock management/mmx/key management
+
