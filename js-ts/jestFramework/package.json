@@ -1,0 +1,16 @@
+{
+  "name": "jest-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jest.js",
+  "scripts": {
+    "test": "jest --verbose",
+    "watch": "jest --watchAll --verbose"
+  },
+  "keywords": [],
+  "author": "@griitch",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}

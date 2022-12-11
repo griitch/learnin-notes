@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>testing weather api</title>
+<body>
+
+  <form action="#">
+    <label for="cirt">city :</label>
+    <input type="text" name="city" id="city" required>
+    <button type="button">search</button>
+  </form>
+
+  <p id="content"></p>
+
+<script>
+  const content = document.querySelector('#content');
+  const url = 'https://api.openweathermap.org/data/2.5/weather?APPID=71d90f3a0d75b4ffcd687686c145742c&q=';
+
+  document.querySelector('button').addEventListener("click", displayinfo);
+
+function displayinfo() {
+  const city = document.querySelector("input").value
+
+  fetch(url + city, {
+      mode: 'cors'
+  }).then(
+    ( response ) => {
+      if(!response.ok)
+        throw new Error(" city not found ")
+      return response.json();
+  }).then(
+    ( responseBody ) => {
+      console.log(responseBody.main,
+      responseBody.sys,
+      responseBody.weather );
+  }).catch((error)=>{
+  console.log(error)
+  });
+
+    // call to fetch returns a response object that represents the http headers of the response
+    // the headers come before the body usually
+    // the Response obj got a json() method tat returns a promise that resolves to
+    // the response body as an object (not json string )
+}
+
+
+async function displayInfoAsync() {}
+
+
+  
+/* the promise returned by fetch resolves for any kind of http response even for 404 and 500
+  the only difference is that the "ok" property of the response object is set to false for 
+  responses that are not in the range 200-299
+  the promise gets rejected on network failures or anytang that prevents the request from 
+  completing
+*/
+
+//functions marked as async always return a promise, other returned values are returned wrapped
+// in a resolved promise, the 2 code below are equuvalent
+
+function doubleAfter2Seconds(x) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(x * 2);
+    }, 2000);
+  });
+}
+
+
+async function addstff() {
+  let a = await doubleAfter2Seconds(5);
+  let b = await doubleAfter2Seconds(10);
+  let c = await doubleAfter2Seconds(20)
+return a + b + c; 
+}
+
+Promise.all(
+  [
+  doubleAfter2Seconds(5),
+  doubleAfter2Seconds(10),
+  doubleAfter2Seconds(20)
+  ]
+).then(
+  values => {
+    console.log(values.reduce((c,v) => c + v, 0 ))
+})
+
+// the way i understand await and async is this way: the following codes do the same thing
+
+let aVar = 'foo';
+
+let aProm = new Promise( (resolve, reject) => {
+  if(true)
+    resolve("promise value");
+  else 
+    reject(new Error("promise error"))
+});
+
+aProm.then( e => {
+   aVar = e;
+  console.log(aVar + " from then");
+
+}).catch( e => alert(e) );
+
+(async () => {
+  try {
+    aVar = await aProm;
+    console.log(aVar + " from await");
+
+  } catch(e) {
+    alert(e);
+  }
+
+})();
+
+</script> 
+
+
+
+
+</body>
+
+
+</html>

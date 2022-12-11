@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=" initial-scale=1.0">
+    <title>local storage</title>
+</head>
+<body>
+    <h2>check your console dummy</h2>
+    <script>
+        //the web storage api :setItem, getItem, removeItem, clear, key, length
+        //key and lenght are attributes, set and get and remove and clear are methods
+
+        //for local and session Storage, in this file ill be using session storage so data gets deleted 
+        //after i close the browser
+
+        //key and values accept strings only, so in order to store stuff like objects and arrays you need
+        //to store them w JSON.stringify() and use JSON.parse() to retrieve them
+
+    sessionStorage.setItem("key1"," value1")
+    sessionStorage.setItem("secondKey","value2")
+    //console.log(sessionStorage);
+
+    //console.log(sessionStorage.getItem("key1"));
+
+    sessionStorage.removeItem("secondKey");
+    //console.log(sessionStorage);
+
+    let obj = {"prop1" : "value1", "prop2" : "value2", "prop3" : "value3" };
+    sessionStorage.setItem("myObj", JSON.stringify(obj));
+    //console.log(JSON.stringify(obj))
+    //console.log(sessionStorage)
+
+    let arr = ["a","b","c","d"];
+    //console.log(JSON.stringify(arr))
+    sessionStorage.setItem("myARR",JSON.stringify(arr));
+    
+
+
+
+
+    </script>
+
+</body>
+</html>

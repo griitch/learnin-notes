@@ -1,0 +1,21 @@
+{
+  "name": "testing-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose",
+    "watch": "jest --watchAll --verbose"
+  },
+  "keywords": [],
+  "author": "@griitch",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.3.1",
+    "supertest": "^6.1.6"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "type": "module"
+}

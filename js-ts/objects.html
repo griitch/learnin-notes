@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Document</title>
+</head>
+
+<body>
+
+
+
+  <script>
+
+    //object : used to store keyed collections of various data and more complex entities 
+    //compared to primitive types
+
+    //let user = new Object(); // "object constructor" syntax (NOT RECCOMENDED USE OBJ LITERALS INSTEAD )
+    let user = { name: "john doe", age: 45, isRetarded: true, saysomethng: function () { ; } };  // "object literal" syntax
+    //the last property can be followed by a comma
+
+    //to add a property / attribute
+    user.nickname = "goo";
+    user["omar yaya"] = "gritch";
+
+
+
+    //to remove a property
+    delete user.nickname;
+    delete user["omar yaya"]
+    // console.log(user["omar yaya"] or user.nickname) => undefined
+
+    //computed properties are inside square brackets [], they mean that the name of the prop
+    //should be computed from the value
+
+    //let fruit = prompt("Which fruit to buy?", "apple");
+    let fruit = "apple";
+    let bag = { [fruit]: 5, }; // the name of the property is taken from the variable fruit
+    // equivalent to let bag = { "apple": 5,}
+
+    //works the same as 
+    // fruit = prompt("Which fruit to buy?", "apple");
+    bag = {};
+    bag[fruit] = 5;
+
+    //there are no limitations on property names. They can be any strings or symbols
+    //except from the __proto__ property
+
+    let obj = { 0: "okay" }; //same as "0" : "okay"
+    //numbers are converted to strings
+    //obj[0] and obj["0"] are the same
+
+
+    //contrairement à d'autres languages de prog ,l'accès à un attribut d'un objet javascript
+    //qui n'existe pas ne génére pas d'erreur, il retourne "undefinded"
+
+    //to check if a property exists or no use the "in" operator
+    ("name" in user) //returns true
+
+    // !("key" in object) is the same as (object.key === undefined) but there is a case where the latter does not
+    //work as intended, its where the property exists but stores an undefined
+
+
+    //the for in loop
+    obj = { key1: "value1", key2: "value2", key3: "value3" }
+    for (key in obj) {
+      console.log(key) // gives key i 
+      console.log(obj[key])// returns value i 
+      //i = { 1,2,3 }
+    }
+
+    //are objects ordered ? if we loop thru an object with for in loop will it process the properties
+    //in the same way they were added ?
+    //for integer properties, they are sorted, for other types, they appear in creation order
+    let codes = {
+      "49": "Germany",
+      "41": "Switzerland",
+      "44": "Great Britain",
+      // ..,
+      "1": "USA"
+    };
+
+    for (let code in codes) {
+      //alert(code); // 1, 41, 44, 49
+    }
+
+    // call bind and apply
+
+    let objet = { num: 17 }
+    function useNum(a) { return this.num + a; }
+
+    //objet does not have a method useNum but we can do this, temporarily attach the method to the obj and execute it
+    useNum.call(objet, 5);
+
+    useNum.apply(object, [5]) //pretty much the same thing as call but uses an array for args
+
+    var boundFunction = useNum.bind(objet);
+    // the bound function has the same body as the og func except the "this" of the param obj is bound to it
+    boundFunction(5) // works fine
+
+//---------------------------------------------------------------------------------------------
+  </script>
+</body>
+
+</html>

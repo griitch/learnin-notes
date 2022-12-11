@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .todo:hover {
+            cursor: pointer;
+            color: green;
+        }
+    </style>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/5.0.0-alpha.0/redux.min.js"
+        integrity="sha512-6WJ7yVV5HDZwZ0RT5CM3FCTgTt5qC5BlfQ9bG43y0BowT5a3GXQqDYaoZgCk+i9vuB1Yj6KdBPQAU8Ra7tV32w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7.16.1/babel.min.js"></script>
+</head>
+
+<body>
+
+    <ul>
+        <li>Store : object that represents the state of the whole app</li>
+        <li>action : object that should have a type property, that specifies
+            how the state should change
+        </li>
+        <li>
+            reducer : a pure function that take 2 params : the current state and the action,
+            and returns the new state, usually done with a switc statement on the action.type prop
+        </li>
+        <li>
+            things i skimmed thru and need to come back to later :
+            <ol>
+                <li>
+                    presentational and container components
+                </li>
+                <li>
+                    react-redux things like the connect methods
+                </li>
+                <li>
+                    action creators
+                </li>
+                <li>
+                    passing the store w context
+                </li>
+            </ol>
+        </li>
+    </ul>
+    <hr>
+    <div id="root"></div>
+
+
+
+    <!-- type="text/jsx" -->
+    <script>
+
+        const { createStore } = Redux;
+
+        const counterReducer = (state = 0, action) => {
+            switch (action.type) {
+                case 'increment':
+                    return state + 1
+
+                case 'decrement':
+                    return state - 1
+
+                default:
+                    return state
+            }
+
+        }
+
+
+        const singleTodoReducer = (state, action) => {
+            switch (action.type) {
+                case 'add_todo':
+                    return { id: action.id, text: action.text, completed: false }
+                case 'toggle_complete': {
+                    if (state.id === action.id)
+                        return { ...state, completed: !state.completed }
+                }
+                default:
+                    return state;
+            }
+        }
+
+        // todosReducer and singleTodoReducer : array reducer composition 
+        const todosReducer = (state = [], action) => {
+            switch (action.type) {
+                case 'add_todo':
+                    return [...state, singleTodoReducer(undefined, action)]
+                case 'toggle_complete':
+                    return state.map(todo => singleTodoReducer(todo, action));
+                default:
+                    return state;
+            }
+        }
+
+        // object reducer composition, 
+        const fullReducer = (state = {}, action) => {
+            return {
+                counterValue: counterReducer(state.counterValue, action),
+                todos: todosReducer(state.todos, action)
+            }
+        }
+
+        // or simply, use the built in combineReducers function
+        const { combineReducers } = Redux;
+        const fullReducer2 = combineReducers({
+            counterValue: counterReducer,
+            todos: todosReducer
+        })
+
+        const store = createStore(fullReducer2);
+
+        const Counter = ({ value, onIncrement, onDecrement }) => (
+            <div>
+                <h1>{value}</h1>
+                <button onClick={onIncrement}>increment</button>
+                <button onClick={onDecrement}>decrement</button>
+            </div>);
+
+
+        const TodoApp = ({ todos, addTodo, toggleComplete }) => {
+            const [text, setText] = React.useState("")
+            return (
+                <div>
+                    <TodoList todos={todos} onTodoClick={toggleComplete} />
+                    <form onSubmit={
+                        (e) => {
+                            e.preventDefault();
+                            addTodo(text);
+                            setText("")
+                        }
+                    }>
+                        <input value={text} onChange={(e) => setText(e.target.value)} type="text" />
+                        <button>add todo</button>
+                    </form>
+                </div>
+            )
+        }
+
+        const TodoList = ({ todos, onTodoClick }) =>
+            <div>
+                {todos.map(todo => <SingleTodo
+                    onClick={() => onTodoClick(todo.id)}
+                    key={todo.id}
+                    text={todo.text}
+                    completed={todo.completed}
+                />
+                )}
+            </div>
+
+
+        const SingleTodo = ({ onClick, text, completed }) => {
+            return <h2
+                className="todo"
+                onClick={onClick}
+            >{completed ? <strike>{text}</strike> : text}</h2>
+        }
+
+
+        const render = () => {
+            ReactDOM.render(
+                <div>
+                    <h4>example 1 : counter</h4>
+                    <Counter value={store.getState().counterValue}
+                        onIncrement={() => { store.dispatch({ type: 'increment' }) }}
+                        onDecrement={() => { store.dispatch({ type: 'decrement' }) }} />
+
+                    <h4>example 2 : todo list</h4>
+                    <TodoApp
+                        todos={store.getState().todos}
+                        addTodo={(text) => {
+                            store.dispatch({
+                                type: 'add_todo',
+                                text, id: store.getState().todos.length
+                            })
+                        }}
+                        toggleComplete={(id) => store.dispatch({ type: "toggle_complete", id })}
+                    />
+                </div>,
+                document.getElementById('root'))
+        }
+        store.subscribe(render); // calls the passed in function at each state change
+        render();
+    </script>
+</body>
+
+
+
+
+
+</html>

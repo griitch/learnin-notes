@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    //each object has a prototype that's either null or an object, in the latter case
+    //the object inherits all the the prototype's proeprties
+
+    //another way to look at it, a shared object between all instances of a particular "class"
+    //that contain things that are not ""unique"" to an instance
+    
+/*
+prototypes are used as a fallback source of properties. When an object gets a request for a property
+that it does not have, its prototype will be searched for the property, then the prototype’s prototype,
+and so on.
+*/
+
+let baseobj = { protoAttribute: "protoValue"  }
+let derivedObj = { randomvalue : "foo", __proto__: baseobj } //__proto__ object literals
+
+//instance.__proto__ references Constructor.prototype
+
+console.log(derivedObj.protoAttribute );
+//randomValue is an own property, protoAttribute is a prototype attribute
+
+//we can check if its an own prop with hasOwnProperty()
+console.log(derivedObj.hasOwnProperty("randomValue")) // returns true   
+
+//----------------------
+
+function student(nam,grade){
+    this.name = nam;
+    this.grade = grade;
+}
+
+student.prototype.sayhello = () =>console.log("hello")
+//adding sayhello() to the prototype so objects can inherit it
+
+//let a = new student("omar", 18);
+//a.sayhello();
+
+
+//we can set the prototype to a whole new ojbect
+
+student.prototype = {  sayhi: () =>console.log("hello"), "foo":"goo"   }
+
+let omar = new student("omar", 18);
+//objects get their prototype from their constructor
+console.log(student.prototype.isPrototypeOf(omar)) //truuu
+
+
+//Object.create(proto) creates a new object and sets its prototype to proto
+//inheritance example
+
+function animal() {}
+animal.prototype = {      
+        eat: function() { console.log("nom nom"); },
+        printcrap: function() {console.log("printing crap"); }
+      }
+
+function bird(name)
+{
+    this.name = name
+}    
+
+bird.prototype = Object.create(animal.prototype);
+//now bird has access to printcrap and eat methods
+
+let mimi = new bird("mimi");
+mimi.printcrap()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

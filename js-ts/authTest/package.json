@@ -1,0 +1,22 @@
+{
+  "name": "authtest",
+  "version": "1.0.0",
+  "description": "testing authentification",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@griitch",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^4.6.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.0.8",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0"
+  }
+}

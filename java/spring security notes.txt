@@ -1,0 +1,28 @@
+configure the userDetails service in the configure method in the config class
+AuthenticationManagerBuilder.userDetailsService
+takes as a param an instance of a class that implements UserDetailsService interface
+that interface got only one method UserDetails loadUserByUsername(Str username)
+in that method, we do all the business logic related to verifying the user, make a db call
+or whatever, and we return an implementation of the UserDetails interface containing
+info about the current user, the most common implementation is User class by spring
+
+Spring.foo.bar.User class got username,password and a collection of granted authorities.
+
+
+--------------------------------
+
+the configure method that takes httpsecurity is used to configure what routes to secure, and what filters to apply
+
+--------------------------------
+
+AuthenticationManager.authenticate :
+call in auth handler, must have an autowired AuthenticationManager bean
+in the config class override the authenticationManagerBean method and annotate it w bean,& in
+the method body call the superclass method and u good to go
+
+Takes a UsernamePasswordAuthenticationToken(str username, str password) as params and authenticates using
+the userDetailsService provided above, returns a fully populated Authentification object if auth ok, and throws
+an exception if not ok ( 3 exceptions exist, for bad credentials, for locked account, and for disabled account )
+
+
+-----------------------------

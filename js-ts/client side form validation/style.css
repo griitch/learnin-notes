@@ -1,0 +1,45 @@
+input[type="text"]:valid {
+  background-color: green;
+}
+
+input[type="text"]:invalid {
+  background-color: red;
+}
+
+input[type="number"]:out-of-range {
+  background-color: orange;
+}
+
+input[type="email"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 250px;
+  border: 1px solid #333;
+  margin: 0;
+  font-size: 90%;
+  box-sizing: border-box;
+}
+
+
+input[type="email"]:invalid {
+    border-color: #900;
+    background-color: #FDD;
+}
+input:invalid:focus {
+   outline: none;
+}
+
+.error {
+    width  : 250px;
+    padding: 0;
+    display: block;
+    font-size: 80%;
+    color: white;
+    background-color: #900;
+    border-radius: 0 0 5px 5px;
+    box-sizing: border-box;
+  }
+
+  .error.active {
+    padding: 1em;
+  }

@@ -1,0 +1,96 @@
+{
+  "superheroes": [
+    {
+      "id": 1,
+      "name": "Batman",
+      "alterEgo": "Bruce Wayne"
+    },
+    {
+      "id": 2,
+      "name": "Superman",
+      "alterEgo": "Clark Kent"
+    },
+    {
+      "id": 3,
+      "name": "Wonder Womyn",
+      "alterEgo": "Princess Diana"
+    },
+    {
+      "name": "tony ferguson",
+      "alterEgo": "el cucuy",
+      "id": 4
+    },
+    {
+      "name": "dustin poirier",
+      "alterEgo": "el diamante",
+      "id": 5
+    },
+    {
+      "name": "colby covington",
+      "alterEgo": "chaos",
+      "id": 6
+    },
+    {
+      "name": "jorge masvidal",
+      "alterEgo": "gamebred",
+      "id": 7
+    },
+    {
+      "name": "kamaru usman",
+      "alterEgo": "84kg",
+      "id": 8
+    },
+    {
+      "name": "omar yaya",
+      "alterEgo": "griitch",
+      "id": 9
+    },
+    {
+      "name": "vladiir putin",
+      "alterEgo": "putin",
+      "id": 10
+    },
+    {
+      "name": "cristiano",
+      "alterEgo": "ronaldo",
+      "id": 12
+    },
+    {
+      "name": "leo",
+      "alterEgo": "messi",
+      "id": 13
+    },
+    {
+      "name": "amin",
+      "alterEgo": "fars",
+      "id": 14
+    },
+    {
+      "name": "hafid",
+      "alterEgo": "l3essaas",
+      "id": 16
+    }
+  ],
+  "fighters": [
+    {
+      "id": 1,
+      "firstname": "micheal",
+      "lastname": "chandler"
+    },
+    {
+      "id": 2,
+      "firstname": "tony",
+      "lastname": "ferguson"
+    },
+    {
+      "id": 3,
+      "firstname": "connor",
+      "lastname": "macgregor"
+    },
+    {
+      "id": 4,
+      "firstname": "nathan",
+      "lastname": "diaz"
+    }
+  ]
+}
