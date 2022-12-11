@@ -62,6 +62,12 @@ Inserting a node :
 - if the node can still accommodate another item, put it there
 - if the node is full( contains m-1 keys ), it will get split into 2 nodes, the smaller half in one node, the bigger hald in the other, the middle key will get promoted to its parent node, if the parent node is full, repeat.
 
+- B vs B+ index : In a B tree, both the keys and the data records are stored in the tree nodes. This means that a B tree can be used to store and retrieve both the key and the associated data in a single operation. In a B+ tree, on the other hand, only the keys are stored in the tree nodes. The data records are stored in separate leaf nodes, which are linked together using pointers. This means that a B+ tree is better suited for storing and retrieving large amounts of data, because it allows for efficient sequential access to the data.
+
+  - Another important difference between B trees and B+ trees is the way they handle null values. In a B tree, null values are treated like any other value, and can be inserted into the tree just like any other key. In a B+ tree, on the other hand, null values are not allowed, because they would break the tree's sorting order.
+
+In general, B+ trees are considered to be more efficient than B trees for most database applications, because they are better suited for storing and accessing large amounts of data. However, B trees can still be useful in certain scenarios, such as when the data is highly variable and does not lend itself well to being stored in a B+ tree.
+
 ## Hash index
 
 store 32 bits hash derived from the value of the indexed column, suited for equality comparison using =  

@@ -61,7 +61,7 @@
 
 - uses F, a func that is not necessarily inversible
 - in the beginning of round i, we divide the bloc into 2 parts Li and Ri (left and right)
-- on pose **_Li+1 = Ri_** and **_Ri+1 = Li xor F(Li,Ri)_**
+- on pose **_Li+1 = Ri_** and **_Ri+1 = Li xor F(Ki,Ri)_**
 - pour inverser un tour, we do not need the inverse of F
 - LiRi are found in Li+1 and Ri+1
 - Ri = Li+1 and Li = Ri+1 xor F(Ki,Ri)
