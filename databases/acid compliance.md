@@ -23,6 +23,7 @@ durability : once a transaction is over, the state of the db should be persisted
   - dirty reads : when you see uncommitted rows in another transaction. as the name suggests, it's reading a dirty value, There is no guarantee the other transaction will commit. So when these are possible, you could return data that was never saved to the database
   - non-repeatable reads : when selecting the same row twice yields different results, because another transaction modified it, the difference between this and a dirty read is that the other transaction committed its changes, it's a legit update
   - phantom read : a special case of non-repeatable reads, happens when a tuple that matches the where clause in inserted or deleted by the other transaction,
+  - lost updates
 
 ### Isolation Levels
 

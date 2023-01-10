@@ -54,7 +54,7 @@
 - split the messages into fixed sized blocks and encrypt each one of them
 - there are many families of block ciphers, manly feistel networks and substitution/permutation networks
 - the encryption is done by many iterations of a rounds function, plus d'iteration => chiffrement plus sur.
-- the rounds function is inversible and the inverse is the decryption
+- the rounds function is invertible and the inverse is the decryption
 - a new key is generated each round, we need a `key schedule` algorithm that generates k1 from k0, and k2 from k1 and so on.
 
 ## Resau de feistel
@@ -68,12 +68,15 @@
 
 ## Substitution/permutation boxes
 
+- [Mike pound video about sp boxes](https://www.youtube.com/watch?v=DLjzI5dX8jc)
 - use one permutation function and at least one substitution function
-- we start the round by xoring the key and the block
+- we start the round by xoring the round key and the block
 - the block is divided into binary words of predefined length
 - the words are replaced by other words using the s-boxes
+- the s-box is literally a lookup table, that associates to each binary word of a given length a word of the same length
 - the bits of the blocs are then permuted using tee p-box **_THE WORDS OF THE WHOLE BLOC NOT THE BINARY WORDS_**
 - we re-xor the result with the round key Ki
+- aes uses sp boxes [mike pound about aes](https://www.youtube.com/watch?v=O4xNJsjtN6E&t=408s)
 
 ## Cryptanalysis of block cyphers
 
