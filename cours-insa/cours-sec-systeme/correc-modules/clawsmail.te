@@ -1,0 +1,27 @@
+policy_module(clawsmail,1.0.0)
+
+# require staff_t because you will use it in the transition rule
+require { type 	staff_t;}
+require { attribute file_type;}
+
+
+# Declare clawsmail_exec_t type and associate it to the file_type attribute
+type clawsmail_exec_t, file_type;
+type staff_clawsmail_t;
+type staff_clawsmail_file_t;
+
+role staff_r types staff_clawsmail_t;
+
+# association de clawsmail_t à l’ attribut domaine (contexte sujet)
+domain_type(staff_clawsmail_t)
+
+# transition automatique vers staff_clawsmail_t lors de l’exécution de clawsmail_exec_t
+domain_entry_file(staff_clawsmail_t, clawsmail_exec_t)
+
+# automatic transition from staff_t to staff_clawsmail_t when executing clawsmail_exec_t
+type_transition staff_t clawsmail_exec_t:process staff_clawsmail_t;
+
+allow staff_t clawsmail_exec_t:file { getattr read open execute };
+allow staff_t staff_clawsmail_t:process { transition };
+
+

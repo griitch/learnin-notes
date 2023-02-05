@@ -1,0 +1,7 @@
+
+# fichiers persos are files inside ur homedir and have the name of the program preceded with a dot
+
+/root/\.claws-mail(/.*)? 		root:object_r:staff_clawsmail_file_t
+
+/usr/bin/claws-mail			--	system_u:object_r:clawsmail_exec_t
+/usr/bin/sylpheed-claws			-l	system_u:object_r:clawsmail_exec_t
